@@ -1,0 +1,5 @@
+/target
+/release
+*.tar.gz
+*.AppImage
+Cargo.lock
