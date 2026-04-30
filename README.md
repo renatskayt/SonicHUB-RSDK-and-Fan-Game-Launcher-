@@ -21,7 +21,8 @@ Browse mods on GameBanana, install them in one click, toggle on/off, delete — 
 
 ## Screenshots
 
-![Main window](screenshots/main.png)
+![Main menu](screenshots/Menu.png)
+![Mod browser](screenshots/Mods.png)
 
 ---
 
