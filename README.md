@@ -1,46 +1,47 @@
-# 🎮 SonicHub Launcher
+# 🎮 SonicHub — RSDK & Fan Game Launcher
 
-A unified mod manager and game launcher for Sonic fan projects on Linux.
+Универсальный лаунчер и мод-менеджер для фанатских Sonic-проектов на Linux.
 
-![GTK4](https://img.shields.io/badge/GTK4-Linux-blue) ![Rust](https://img.shields.io/badge/Rust-1.70+-orange) ![License](https://img.shields.io/badge/license-MIT-green)
+Всё в одном месте: запуск игр, скачивание модов с GameBanana, включение/отключение, удаление — без боли.
 
-## ✨ Features
+---
 
-- **Multi-Engine Support** — Launch and manage games across multiple Sonic engines:
-  - RSDKv3 (Sonic CD)
-  - RSDKv4 (Sonic 1/2 2013)
-  - RSDKv5 (Sonic Mania)
-  - Sonic 1 Forever (via Wine)
-  - Sonic 2 Absolute (via Wine)
-  - Sonic 3 A.I.R. (Flatpak / Native)
+## Что умеет
 
-- **🌐 GameBanana Integration** — Browse, search, and install mods directly from GameBanana
-- **📦 One-Click Mod Install** — Supports `.zip` and `.7z` archives with automatic extraction
-- **🔄 Mod Management** — Enable/disable mods with toggles, delete with confirmation
-- **🖼️ Custom Banners** — Set custom banner images for each game profile
-- **🔍 Smart Detection** — Detects already-installed mods, auto-copies DLLs for Mania mods
-- **🎨 Modern UI** — Dark theme with smooth design, built with GTK4
+- 🚀 **Запуск игр** — RSDKv3/v4/v5, Sonic 1 Forever, Sonic 2 Absolute, Sonic 3 A.I.R.
+- 🌐 **GameBanana** — встроенный браузер модов с превью, описанием и поиском
+- 📦 **Установка модов** — скачал, распаковал (zip/7z), включил — всё автоматически
+- 🔄 **Управление модами** — тоглы вкл/выкл, кнопка удаления с подтверждением
+- 🔍 **Умный детект** — видит уже установленные моды, копирует DLL для Mania
+- 🎨 **Красивый UI** — тёмная тема, GTK4, выглядит нативно
 
-## 📸 Screenshots
+---
 
-*Coming soon*
+## Скриншоты
 
-## 🚀 Installation
+*Скоро будут*
 
-### Pre-built Binary (Linux x86_64)
+---
+
+## Установка
+
+### Готовый бинарь (самый простой способ)
+
+Качаешь из [Releases](https://github.com/renatskayt/SonicHUB-RSDK-and-Fan-Game-Launcher-/releases), даёшь права и запускаешь:
 
 ```bash
-# Download and run
 chmod +x sonichub-launcher
 ./sonichub-launcher
 ```
 
-### Build from Source
+Всё. Никаких зависимостей кроме GTK4 (который уже есть на большинстве дистрибутивов).
 
-#### Dependencies
+### Сборка из исходников
+
+Если хочешь собрать сам — нужен Rust и пара пакетов:
 
 ```bash
-# Ubuntu/Debian/Mint
+# Зависимости (Ubuntu/Mint/Debian)
 sudo apt install build-essential libgtk-4-dev p7zip-full
 
 # Fedora
@@ -50,51 +51,56 @@ sudo dnf install gtk4-devel p7zip
 sudo pacman -S gtk4 p7zip
 ```
 
-#### Build
+Дальше:
 
 ```bash
-git clone https://github.com/RenatskaYT/sonichub-launcher.git
-cd sonichub-launcher
+git clone https://github.com/renatskayt/SonicHUB-RSDK-and-Fan-Game-Launcher-.git
+cd SonicHUB-RSDK-and-Fan-Game-Launcher-
 cargo build --release
 ./target/release/sonichub-launcher
 ```
 
-## 🎯 Quick Start
+> **Нет Rust?** Ставится одной командой: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
-1. Click **＋ Add Game** in the sidebar
-2. Enter game name, select engine type
-3. Set paths to executable and Data.rsdk (if needed)
-4. Set your mods folder path
-5. Click **🌐 GameBanana** to browse and install mods!
+---
 
-### Engine-Specific Notes
+## Как пользоваться
 
-| Engine | Executable | Data.rsdk | Launch Method |
-|--------|-----------|-----------|---------------|
-| RSDKv3/v4/v5 | Native Linux binary | Required | Direct |
-| Sonic 1 Forever | `.exe` file | Required | Wine |
-| Sonic 2 Absolute | `.exe` file | Not needed | Wine |
-| Sonic 3 A.I.R. | Command (e.g. `flatpak run org.sonic3air.Sonic3AIR`) | Not needed | Command |
+1. Нажми **＋ Add Game** в боковой панели
+2. Выбери движок (RSDK v3/v4/v5, Forever, Absolute, AIR)
+3. Укажи пути к exe и Data.rsdk (если нужно)
+4. Укажи папку модов
+5. Жми **🌐 GameBanana** — ищи и ставь моды в один клик!
 
-## 🔧 Technical Details
+### Какой движок — какие настройки
 
-- **Language:** Rust
-- **UI Framework:** GTK4 (native Linux)
-- **Mod Config:** Compatible with RSDKv5 `modconfig.ini` format (`[Mods]` section, `y`/`n` values)
-- **Archive Support:** Native ZIP + 7z fallback
-- **Thumbnail Cache:** FNV-1a hashed, stored in `~/.cache/rsdk-launcher/thumbs/`
+| Движок | Что указывать | Как запускается |
+|--------|--------------|-----------------|
+| RSDKv3/v4/v5 | exe + Data.rsdk | Напрямую |
+| Sonic 1 Forever | exe + Data.rsdk | Через Wine |
+| Sonic 2 Absolute | только exe | Через Wine |
+| Sonic 3 A.I.R. | команда запуска | `flatpak run ...` или напрямую |
 
-## 📋 Requirements
+---
 
-- Linux (x86_64)
-- GTK4 runtime libraries
-- Wine (for Sonic 1 Forever / Sonic 2 Absolute)
-- p7zip-full (optional, for .7z mod archives)
+## Тех. детали
 
-## 🤝 Contributing
+- **Язык:** Rust 🦀
+- **UI:** GTK4
+- **Формат конфига модов:** совместим с RSDKv5 (`[Mods]`, `y`/`n`)
+- **Архивы:** нативный ZIP + 7z как фолбэк
+- **Кеш превью:** `~/.cache/rsdk-launcher/thumbs/`
+- **Конфиг игр:** `~/.config/rsdk-launcher/config.json`
 
-Pull requests welcome! Feel free to open issues for bugs or feature requests.
+## Требования
 
-## 📄 License
+- Linux x86_64
+- GTK4 (обычно уже стоит)
+- Wine (если играешь в Forever/Absolute)
+- p7zip-full (опционально, для .7z архивов)
 
-MIT License
+---
+
+## Лицензия
+
+MIT — делай что хочешь, просто укажи автора.
