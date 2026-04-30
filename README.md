@@ -21,7 +21,7 @@ Browse mods on GameBanana, install them in one click, toggle on/off, delete — 
 
 ## Screenshots
 
-*Coming soon*
+![Main window](screenshots/main.png)
 
 ---
 
